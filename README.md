@@ -50,3 +50,14 @@ Here we can see a rough design of what our end product will look like. I plan on
 
 
 ![Design Image](./images/design_vision.jpg)
+
+# Startup HTML
+This will include a description of the various elements and that I have added
+- 4 pages of pages of proper HTML that serve as tempary placeholders
+- Use of Body, nav, main, header, footer
+- I have funcitonal links between all four pages
+- I have a word of the day api placeholder on the game page
+- I have an image on the about page and the MM on the card buttons may also be an image.
+- index page has a login placeholder
+- score page has database placeholder
+- Notification section to alert use to notifications(websocket)
