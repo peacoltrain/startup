@@ -27,3 +27,5 @@ There are many different elements that can be modified in CSS. The only way to r
     1. Adding a feature to a parent html element that both elements are children of.
     2. listing the features via comma separation.
 - Animation can be a vast field but may be outside my intended scope.
+- Use Flex to control how different elements change as the view also changes. This is important if you expect someone on a mobile device will use the software.
+- There are also third party systems that streamline the create of css elements. I will try to use bootstrap for my project. This will require me to link it in the head of the html and then call source at the end of the body.
