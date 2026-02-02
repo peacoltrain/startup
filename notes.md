@@ -16,3 +16,14 @@ It has been a while since i used HTML. The important things to remember are.
 1. Make a sandwich `<something></something>`
 2. HTML primarly handles structure. CSS does style and. JavaScript does interaction
 3. Look up the info when you need. There are many different structures so make sure you get the right solution to each problem.
+
+## Learning CSS
+
+There are many different elements that can be modified in CSS. The only way to really learn about all the features is to us them. From my experimentation here are a few important things to remember.
+
+- CSS is not like python and is needs `;` after every rule. Each rule is structured `<feature>: [parameter(s)];`
+- ids are accessed through `#idvalue`, classes are accessed via `.classname`. 
+- Multiple elements can have rules applied by either
+    1. Adding a feature to a parent html element that both elements are children of.
+    2. listing the features via comma separation.
+- Animation can be a vast field but may be outside my intended scope.
