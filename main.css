@@ -1,5 +1,6 @@
 html {
     height: 100%;
+    margin: 0;
 }
 
 
@@ -7,7 +8,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin: 0;
 }
 
 /* Header for each page */
@@ -22,6 +22,7 @@ body {
 main {
   flex: 1;
   display: flex;
+  padding-top: 56px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
