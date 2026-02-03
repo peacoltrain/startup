@@ -1,19 +1,36 @@
 
-html {
-    
-}
-
 body {
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
 /* Header for each page */
-header {
-    /* Handle flex for each page */
-    flex: 1 50px;
+/* header {
+    flex: 1 10vh;
     flex-direction: column;
 
     background-color: darkslategrey;
-    color: white;
+    color: black;
+} */
+
+menu {
+  flex: 1;
+  display: flex;
+  /*  overwrite Bootstrap so the menu does not wrap */
+  flex-direction: row !important;
+  list-style: none;
+}
+
+.navbar {
+    background-color: darkslategrey;
+}
+
+.navbar .navbar-brand {
+    padding-left: 1%;
+    font-size: 2rem;
+}
+
+.nav-link {
+    margin: 10px;
 }
