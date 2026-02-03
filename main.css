@@ -1,0 +1,19 @@
+
+html {
+    
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header for each page */
+header {
+    /* Handle flex for each page */
+    flex: 1 50px;
+    flex-direction: column;
+
+    background-color: darkslategrey;
+    color: white;
+}
