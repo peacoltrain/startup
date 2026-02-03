@@ -14,12 +14,29 @@ body {
     color: black;
 } */
 
+main {
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+    font-family: "Courier New", Courier, monospace;
+}
+
 menu {
   flex: 1;
   display: flex;
   /*  overwrite Bootstrap so the menu does not wrap */
   flex-direction: row !important;
   list-style: none;
+}
+
+footer {
+    background-color: darkslategrey;
+    color: white;
 }
 
 .navbar {
