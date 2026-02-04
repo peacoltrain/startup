@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com');
+
+
 html {
     height: 100%;
     margin: 0;
@@ -29,7 +32,7 @@ main {
 }
 
 main span {
-    font-family: "Courier New", Courier, monospace;
+    font-family: 'Roboto Mono', monospace;
 }
 
 menu {

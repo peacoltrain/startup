@@ -70,3 +70,4 @@ For my CSS this is what i did.
 - Styled the scores table.
 - All colors are temparary place holders as I have no eye for colors.
 - I utilized flex as a way to adjust for various viewport views. I haven't made anything to make is supper nice for mobile devices. For now we will assume it should be a computer based websight.
+- Imported a monospace font on index.html.
