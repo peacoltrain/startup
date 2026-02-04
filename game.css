@@ -3,7 +3,7 @@ main {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  padding-top: 92px; /* prevents going under fixed-top navbar */
+  padding-top: 92px;
 }
 
 

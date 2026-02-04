@@ -1,0 +1,15 @@
+main {
+    padding-top: 92px;
+    align-items: normal;
+    justify-content: left;
+}
+
+table {
+    margin: 20px;
+    border: 1px solid black;
+    background-color: rgb(194, 217, 224);
+}
+
+tr {
+    border: 1px solid black;
+}

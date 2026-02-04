@@ -61,3 +61,12 @@ This will include a description of the various elements and that I have added
 - index page has a login placeholder
 - score page has database placeholder
 - Notification section to alert use to notifications(websocket)
+
+# Startup CSS
+For my CSS this is what i did.
+- I used a bootstrap navagation bar that is uniform across the pages.
+- Added style to footer and had that consistent accross the pages.
+- Increased size of memory 'cards' and had them take of the center stage of the game page. Also added some interactive hovering features to the cards.
+- Styled the scores table.
+- All colors are temparary place holders as I have no eye for colors.
+- I utilized flex as a way to adjust for various viewport views. I haven't made anything to make is supper nice for mobile devices. For now we will assume it should be a computer based websight.
