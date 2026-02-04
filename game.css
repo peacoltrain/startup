@@ -11,8 +11,34 @@ main section{
     height: 100%
 }
 
+.gameboard table {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.gameboard td {
+  width: 20%;
+  height: 20%;
+}
+
+.gameboard button {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+}
+
+.gameboard button:hover {
+    background-color: rgb(136, 205, 228);
+    border: 2px black;
+}
+
 .sidebar {
-    flex: 1 15%;
+    flex: 0 0 16%;
     display: flex;
     flex-direction: column;
     align-items:normal;
@@ -21,14 +47,15 @@ main section{
 }
 
 .gameboard {
-    flex: 1 50%;
+    flex: 1 0 74%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .apiplace {
-    flex: 1 20%;
+    flex: 0 0 10%;
     display: flex;
     flex-direction: column;
     background-color: aliceblue;
