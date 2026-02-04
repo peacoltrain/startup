@@ -16,6 +16,7 @@ main section{
   height: 90%;
   margin: auto;
   border-collapse: collapse;
+  margin-bottom: 10px;
 }
 
 .gameboard td {
@@ -30,6 +31,11 @@ main section{
   background-color: lightblue;
   border: none;
   border-radius: 5px;
+}
+
+.gameboard button .newGame{
+    background-color: darkslategray;
+    color: white;
 }
 
 .gameboard button:hover {
