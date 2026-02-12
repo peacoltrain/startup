@@ -2,8 +2,20 @@ import React from 'react';
 
 export function Login() {
   return (
-    <main className="container-fluid bg-secondary text-center">
-      <div>login displayed here</div>
+    <main>
+      <h1>Try to be a Memory Master</h1>
+      <form method="get" action="game.html">
+        <div>
+          <span>Username</span>
+          <input id="username" type="text" placeholder="Username" autocomplete="username" />
+        </div>
+        <div>
+          <span>Password</span>
+          <input id="password" type="password" placeholder="Password" />
+        </div>
+        <button type="submit">Login</button>
+        <button type="submit">Sign UP</button>
+      </form>
     </main>
   );
 }
