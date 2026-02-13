@@ -7,7 +7,7 @@ export function Login() {
       <form method="get" action="game.html">
         <div>
           <span>Username</span>
-          <input id="username" type="text" placeholder="Username" autocomplete="username" />
+          <input id="username" type="text" placeholder="Username" autoComplete="username" />
         </div>
         <div>
           <span>Password</span>

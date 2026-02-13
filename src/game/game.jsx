@@ -3,7 +3,7 @@ import './game.css'
 
 export function Game() {
   return (
-    <main>
+    <main id="main_game">
       <section className="sidebar">
         <div className="players">
           Player:
@@ -19,6 +19,7 @@ export function Game() {
       </section>
       <section className="gameboard">
         <table>
+          <tbody>
           <tr>
             <td>
               <button>
@@ -154,6 +155,7 @@ export function Game() {
               </button>
             </td>
           </tr>
+          </tbody>
         </table>
         <div>
         <button className="newGame">New Game</button>
