@@ -35,3 +35,5 @@ There are many different elements that can be modified in CSS. The only way to r
 Although I am still unclear on some of the inner workings of the vite and react i gathered a few things from the excersize.
 
 - You can call a .js or jsx file from the html file be using `<script src=".jsxpath"></script>`. From that .jsx script file we can then call the App.jsx file to access render. what the app itself looks like.
+
+From painful experience I discovered what happens when you do an improper import with react. The result is a white screen. Make sure that the name of what you are importing is correct.

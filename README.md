@@ -71,3 +71,11 @@ For my CSS this is what i did.
 - All colors are temparary place holders as I have no eye for colors.
 - I utilized flex as a way to adjust for various viewport views. I haven't made anything to make is supper nice for mobile devices. For now we will assume it should be a computer based websight.
 - Imported a monospace font on index.html.
+
+# Porting over to React
+
+- *Bundled using Vite* - Imported the needed packages and got page to open with vite.
+
+- *Multiple react comopoets that contain HTML and css* - Structured the componetns and css files in an ordered way in folders. Obtaining the same look as last week.
+
+- *React router* - Got a router functioning that navigates between pages in my app.jsx file. This helps the site be less baggy.
