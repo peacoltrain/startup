@@ -12,7 +12,7 @@ export function About() {
 
         <p>Please enjoy this lovely image of the ocean</p>
 
-        <img src="../../public/oceanview.jpg" alt="Bright Blue Ocean" width="600"></img>
+        <img src="/oceanview.jpg" alt="Bright Blue Ocean" width="600"></img>
         
     </main>
   );
