@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 
 html {
@@ -38,7 +38,7 @@ main {
   justify-content: center;
 }
 
-.main span {
+main span {
     font-family: 'Roboto Mono', monospace;
 }
 
