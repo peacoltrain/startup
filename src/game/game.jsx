@@ -161,9 +161,6 @@ export function Game() {
         <button className="newGame">New Game</button>
         </div>
       </section>
-      <section className="apiplace">
-        <div>This is where I will have a word of the day api generated so we can learn something new</div>
-      </section>
     </main>
   );
 }
