@@ -6,10 +6,16 @@ import { Login } from './login/login';
 import { Game } from './game/game';
 import { Scores } from './scores/scores';
 import { About } from './about/about';
+import { AuthState } from './login/AuthState';
+
 
 
 export default function App() {
-  return (
+    const [userName, setUsername] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated :  AuthState.Unauthenticated
+    const [authState, setAuthState] = React.useState(currentAuthState)
+
+    return (
     <BrowserRouter>
         <header>
         <nav className="navbar fixed-top navbar-dark">
@@ -32,8 +38,12 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path='/' element={<Login />} exact />
-            <Route path='/game' element={<Game />} />
+            <Route path='/' element={<Login 
+                userName={userName} 
+                authState={authState}
+                onAuthChange={(userName, authState) => {setAuthState(authState); setUsername(userName)}}
+                />} exact />
+            <Route path='/game' element={<Game userName={userName}/>} />
             <Route path='/scores' element={<Scores />} />
             <Route path='/about' element={<About />} />
             <Route path='*' element={<NotFound />} />
@@ -46,7 +56,7 @@ export default function App() {
         <a href="https://github.com/peacoltrain/startup.git">Memory Github</a>
         </footer>
     </BrowserRouter>
-  );
+    );
 }
 
 function NotFound() {
