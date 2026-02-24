@@ -2,7 +2,7 @@ import React from 'react'
 
 
 export function Unauthenticated(props) {
-    const [userName, setUsername] = React.useState('');
+    const [userName, setUsername] = React.useState(props.userName);
     const [password, setPassword] = React.useState('');
 
     function loginUser(){
@@ -24,7 +24,7 @@ export function Unauthenticated(props) {
         </div>
         <div>
           <span>Password</span>
-          <input id="password" type="password" placeholder="Password" onChange={(e) => setUsername(e.target.value)}/>
+          <input id="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <button type="submit"  onClick={loginUser}>Login</button>
         <button type="submit" onClick={signUp}>Sign UP</button>
