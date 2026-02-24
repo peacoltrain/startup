@@ -17,7 +17,6 @@ export function Unauthenticated(props) {
 
     return (
         <form>
-        <div>This is a test!</div>
         <div>
           <span>Username</span>
           <input id="userName" type="text" placeholder="Username" autoComplete="userName" onChange={(e) => setUsername(e.target.value)}/>

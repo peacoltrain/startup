@@ -21,18 +21,27 @@ export default function App() {
         <nav className="navbar fixed-top navbar-dark">
             <div className="navbar-brand">Memory Master</div>
             <menu className="navbar-nav">
-            <li className="nav-item">
-                <NavLink className="nav-link" to="">Login</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" to="game">Play</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" to="scores">Scores</NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" to="about">About</NavLink>
-            </li>
+                {authState === AuthState.Authenticated && (
+                    <li className="nav-item">
+                    <NavLink className="nav-link" to="">Login</NavLink>
+                    </li>
+                )}
+            
+                {authState === AuthState.Authenticated && (
+                    <li className="nav-item">
+                    <NavLink className="nav-link" to="game">Play</NavLink>
+                    </li>
+                )}
+                {authState === AuthState.Authenticated && (
+                    <li className="nav-item">
+                    <NavLink className="nav-link" to="scores">Scores</NavLink>
+                    </li>
+                )}
+                {authState === AuthState.Authenticated && (
+                    <li className="nav-item">
+                    <NavLink className="nav-link" to="about">About</NavLink>
+                    </li>
+                )}
             </menu>
         </nav>
         </header>
