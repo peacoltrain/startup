@@ -6,27 +6,25 @@ export function Unauthenticated(props) {
     const [password, setPassword] = React.useState('');
 
     function loginUser(){
-        console.log("Tried to sign up " + userName + " with a password of " + password)
         localStorage.setItem('userName', userName);
     }
 
     function signUp(){
-        console.log("Tried to sign up " + userName + " with a password of " + password);
         localStorage.setItem('userName', userName);
     }
 
     return (
         <form>
         <div>
-          <span>Username</span>
+          <span>Username </span>
           <input id="userName" type="text" placeholder="Username" autoComplete="userName" onChange={(e) => setUsername(e.target.value)}/>
         </div>
         <div>
-          <span>Password</span>
+          <span>Password </span>
           <input id="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
         </div>
-        <button type="submit"  onClick={loginUser}>Login</button>
-        <button type="submit" onClick={signUp}>Sign UP</button>
+        <button type="submit"  onClick={loginUser} disabled={!userName || !password}>Login</button>
+        <button type="submit" onClick={signUp} disabled={!userName || !password}>Sign UP</button>
       </form>
     );
 }
