@@ -10,8 +10,7 @@ export function Sidebar() {
     ];
 
     const actions = [
-        "scored a perfect 12!",
-        "scored 32",
+        "scored",
         "started a new game",
         "scored 24"
     ];
@@ -19,6 +18,10 @@ export function Sidebar() {
     function createNotification() {
         let name = names[Math.floor(Math.random() * names.length)]
         let action = actions[Math.floor(Math.random() * actions.length)]
+        if (action === "scored") {
+            let value = Math.floor(Math.random() * 28) + 12
+            action = `${action} ${value}`;
+        }
         return `${name} ${action}`;
     }
 
@@ -48,7 +51,6 @@ export function Sidebar() {
     return (
         <section className="sidebar">
             <div className="websocket">Notifications:</div>
-            <div>This is a placeholder until random elements can be generated</div>
             {notifications.map((note) => (
                 <div>{note}</div>
             ))}
