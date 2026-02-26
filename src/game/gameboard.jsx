@@ -6,7 +6,6 @@ export function GameBoard(props) {
     const [cards, setCards] = React.useState(placeCards([null, null, null, null, null, null, null, null, null, null]));
     const [locked, setLock] = React.useState(true);
     const [firstFlipp, setFirstFlipp] = React.useState(null);
-    const [inGame, setInGame] = React.useState(false);
     const [pairs, setPairs] = React.useState(0);
 
     {/* This is where I shuffle my array
@@ -38,6 +37,29 @@ export function GameBoard(props) {
         return cardSet;
     }
 
+    function saveGame(pairsFound) {
+        if (pairsFound !== 10) return;
+
+        const scoreEntry = {
+            name: userName,
+            score: score,
+            date: new Date().toLocaleDateString()
+        };
+
+        // Get existing scores
+        const scoresText = localStorage.getItem('scores');
+        let scores = [];
+
+        if (scoresText) {
+            scores = JSON.parse(scoresText);
+        }
+
+        scores.push(scoreEntry);
+        scores = scores.slice(0, 10);
+        localStorage.setItem('scores', JSON.stringify(scores));
+        console.log("Score saved:", scoreEntry);
+    }
+
     function match(flippedCard) {
         console.log("Match successfully loaded!")
         {console.log(firstFlipp)}
@@ -56,7 +78,7 @@ export function GameBoard(props) {
 
                     if (newPairs === 10) {
                         console.log("Game Over!");
-                        setInGame(false);
+                        saveGame(newPairs);
                     }
 
                     return newPairs;
@@ -102,14 +124,8 @@ export function GameBoard(props) {
     }
 
     function newGame() {
-        /* If already in a game, save the game data so it can be stored in local storage */
-        if (inGame) {
-            console.log("Saving game data...")
-        }
-        
         setPairs(0);
         setFirstFlipp(null);
-        setInGame(true);
         setScore(0)
         setLock(false)
         setCards(() => placeCards([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))

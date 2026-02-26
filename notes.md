@@ -37,3 +37,12 @@ Although I am still unclear on some of the inner workings of the vite and react 
 - You can call a .js or jsx file from the html file be using `<script src=".jsxpath"></script>`. From that .jsx script file we can then call the App.jsx file to access render. what the app itself looks like.
 
 From painful experience I discovered what happens when you do an improper import with react. The result is a white screen. Make sure that the name of what you are importing is correct.
+
+## Programming with React and javascipt.
+
+Beware of async function. Many of the set________ of react states run out of order. This means that if the logic of one relies on another. You will make a mess of your code.
+Use delay to deal with this issue if needed.
+
+It is alot cleaner to not hardcode the lines of a table. Have javascript do that for you.
+
+.map in the context of Arrays is very useful. In in essence is the same as a enumerate. An array.map(var => {}) Will go over every element, give it the name of whatever variable and then use that name in the following function.
