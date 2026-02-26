@@ -79,3 +79,24 @@ For my CSS this is what i did.
 - *Multiple react comopoets that contain HTML and css* - Structured the componetns and css files in an ordered way in folders. Obtaining the same look as last week.
 
 - *React router* - Got a router functioning that navigates between pages in my app.jsx file. This helps the site be less baggy.
+
+# Reactivity
+
+- For this section of the project, we essential hand to make the website essentially work without a backend. Here is what I did to accomplish this.
+    - I fully implemented the Login page.
+        - Cannot login without both a username and password
+        - The info is saved locally for the time being.
+        - Depending on the status of being logged in or not will see various prompts.
+        - Cannot go to any other page without being logged in
+    - Functional game of Memory
+        - Can play standard memory.
+        - Click new game to enable the board
+        - Dynamic card possiton.
+        - Blocks spam clicking
+        - Tracks number of attempted matches as the "score" lower is better.
+        - Saves the game info locally.
+    - Generated notifications
+        - Not actual websocket, but mimics behavior using some arrays with some mixing and matching with different notifications
+    - Scores Keeps track of the last 10 completed games
+-I used useState and useEffect hooks for creating variables that when changed re-renders. Had useEffect help with creating new messages every-once in a while.
+
