@@ -57,34 +57,25 @@ export function GameBoard(props) {
         scores.push(scoreEntry);
         scores = scores.slice(0, 10);
         localStorage.setItem('scores', JSON.stringify(scores));
-        console.log("Score saved:", scoreEntry);
     }
 
     function match(flippedCard) {
-        console.log("Match successfully loaded!")
-        {console.log(firstFlipp)}
-        {console.log(flippedCard)}
-
         setTimeout(() => {
             /*If the cards are a match increase score by one, clear first and second card.*/
             if (firstFlipp.value === flippedCard.value){
-                console.log("Matchfound!");
                 matchCard([firstFlipp.id, flippedCard.id])
                 setFirstFlipp(null);
                 setScore(oldScore => oldScore +1);
                 setPairs(prev => {
                     const newPairs = prev + 1;
-                    console.log("Pairs:", newPairs);
 
                     if (newPairs === 10) {
-                        console.log("Game Over!");
                         saveGame(newPairs);
                     }
 
                     return newPairs;
                 });
             } else { /*If not match, make cards unflipped, clear first and second card, increase score by one*/
-                console.log("No Match");
                 flipCard([firstFlipp.id, flippedCard.id]);
                 setFirstFlipp(null);
                 setScore(oldScore => oldScore +1);
