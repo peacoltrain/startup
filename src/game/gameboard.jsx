@@ -6,7 +6,8 @@ export function GameBoard(props) {
     const [cards, setCards] = React.useState(placeCards([null, null, null, null, null, null, null, null, null, null]));
     const [locked, setLock] = React.useState(true);
     const [firstFlipp, setFirstFlipp] = React.useState(null);
-    const pairs = 0;
+    const [inGame, setInGame] = React.useState(false);
+    const [pairs, setPairs] = React.useState(0);
 
     {/* This is where I shuffle my array
         I am using the Fisher-Yates shuffle.
@@ -46,19 +47,29 @@ export function GameBoard(props) {
             /*If the cards are a match increase score by one, clear first and second card.*/
             if (firstFlipp.value === flippedCard.value){
                 console.log("Matchfound!");
-                pairs++;
                 matchCard([firstFlipp.id, flippedCard.id])
                 setFirstFlipp(null);
                 setScore(oldScore => oldScore +1);
+                setPairs(prev => {
+                    const newPairs = prev + 1;
+                    console.log("Pairs:", newPairs);
+
+                    if (newPairs === 10) {
+                        console.log("Game Over!");
+                        setInGame(false);
+                    }
+
+                    return newPairs;
+                });
             } else { /*If not match, make cards unflipped, clear first and second card, increase score by one*/
                 console.log("No Match");
                 flipCard([firstFlipp.id, flippedCard.id]);
                 setFirstFlipp(null);
                 setScore(oldScore => oldScore +1);
             }
+
             setLock(false);
         }, 3000);
-        
     }
 
     function matchCard(matchedIDs) {
@@ -91,6 +102,14 @@ export function GameBoard(props) {
     }
 
     function newGame() {
+        /* If already in a game, save the game data so it can be stored in local storage */
+        if (inGame) {
+            console.log("Saving game data...")
+        }
+        
+        setPairs(0);
+        setFirstFlipp(null);
+        setInGame(true);
         setScore(0)
         setLock(false)
         setCards(() => placeCards([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
