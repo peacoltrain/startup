@@ -33,7 +33,7 @@ main section{
   border-radius: 5px;
 }
 
-.gameboard button .newGame{
+.gameboard .newGame{
     background-color: darkslategray;
     color: white;
 }
@@ -66,3 +66,13 @@ main section{
     flex-direction: column;
     background-color: aliceblue;
 }
+
+
+.gameboard > .gameData {
+  align-self: flex-start;
+  width: auto;
+  text-align: left;
+  margin-left: 12px;
+}
+
+
