@@ -6,6 +6,7 @@ export function GameBoard(props) {
     const [cards, setCards] = React.useState(placeCards([null, null, null, null, null, null, null, null, null, null]));
     const [locked, setLock] = React.useState(true);
     const [firstFlipp, setFirstFlipp] = React.useState(null);
+    const pairs = 0;
 
     {/* This is where I shuffle my array
         I am using the Fisher-Yates shuffle.
@@ -45,17 +46,16 @@ export function GameBoard(props) {
             /*If the cards are a match increase score by one, clear first and second card.*/
             if (firstFlipp.value === flippedCard.value){
                 console.log("Matchfound!");
+                pairs++;
                 matchCard([firstFlipp.id, flippedCard.id])
                 setFirstFlipp(null);
                 setScore(oldScore => oldScore +1);
-                return;
             } else { /*If not match, make cards unflipped, clear first and second card, increase score by one*/
                 console.log("No Match");
                 flipCard([firstFlipp.id, flippedCard.id]);
                 setFirstFlipp(null);
                 setScore(oldScore => oldScore +1);
             }
-
             setLock(false);
         }, 3000);
         
