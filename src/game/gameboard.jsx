@@ -4,6 +4,7 @@ export function GameBoard(props) {
     const userName = props.userName;
     const [score, setScore] = React.useState(null)
     const [cards, setCards] = React.useState([]);
+    const [inGame, setInGame] = React.useState(false);
 
     {/* This is where I shuffle my array
         I am using the Fisher-Yates shuffle.
@@ -13,7 +14,7 @@ export function GameBoard(props) {
         let r;
 
         while (i !== 0) {
-            r = Math.floor(Math.randome() * i);
+            r = Math.floor(Math.random() * i);
             i--;
 
             [array[i], array[r] = [array[r], array[i]]];
@@ -27,13 +28,19 @@ export function GameBoard(props) {
         const allValues = [...values, ...values];
 
         let shuffled = shuffle(allValues);
-        cardSet = shuffled.map((value, index) => ({
+        let cardSet = shuffled.map((value, index) => ({
             id: index,
             value: value,
             flipped: false,
             matched: false
         }));
         return cardSet;
+    }
+
+    function newGame() {
+        setScore(0)
+        setInGame(true)
+        setCards(() => placeCards())
     }
 
     return (
@@ -43,38 +50,39 @@ export function GameBoard(props) {
         <table>
           <tbody>
           <tr>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
           </tr>
           <tr>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
           </tr>
           <tr>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
           </tr>
           <tr>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
-            <td><button>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
+            <td><button disabled={!inGame}>MM</button></td>
           </tr>
           </tbody>
         </table>
         <div>
-        <button className="newGame">New Game</button>
+        <button className="newGame" onClick={newGame}>New Game</button>
         </div>
+        {console.log(cards)}
       </section>
     ); 
 }
