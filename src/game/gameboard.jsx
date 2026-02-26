@@ -35,12 +35,10 @@ export function GameBoard(props) {
         return cardSet;
     }
 
-    function cardFlip(cardId) {
+    function cardFlip(flippedCard) {
         setCards(prevCards =>
             prevCards.map(card =>
-                card.id === cardId
-                    ? { ...card, flipped: true }
-                    : card
+                card === flippedCard ? { ...card, flipped: true } : card
             )
         );
     }
@@ -57,34 +55,20 @@ export function GameBoard(props) {
         <div className='gameData'>Score: {score}</div>
         <table>
           <tbody>
-          <tr>
-            <td><button disabled={!inGame} onClick={() => cardFlip(0)}>{cards[0].flipped ? cards[0].value : 'MM'}</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(1)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(2)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(3)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(4)}>MM</button></td>
-          </tr>
-          <tr>
-            <td><button disabled={!inGame} onClick={() => cardFlip(5)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(6)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(7)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(8)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(9)}>MM</button></td>
-          </tr>
-          <tr>
-            <td><button disabled={!inGame} onClick={() => cardFlip(10)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(11)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(12)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(13)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(14)}>MM</button></td>
-          </tr>
-          <tr>
-            <td><button disabled={!inGame} onClick={() => cardFlip(15)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(16)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(17)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(18)}>MM</button></td>
-            <td><button disabled={!inGame} onClick={() => cardFlip(19)}>MM</button></td>
-          </tr>
+            {[0,1,2,3].map(row => (
+                <tr>
+                    {cards.slice(row * 5,(row * 5) + 5).map(card => (
+                        <td>
+                            <button
+                            disabled={!inGame}
+                            onClick={() => cardFlip(card)}
+                            >
+                            {card.flipped ? card.value : 'MM'}
+                            </button>
+                        </td>
+                    ))}
+                </tr>
+            ))}
           </tbody>
         </table>
         <div>
