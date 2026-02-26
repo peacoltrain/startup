@@ -17,9 +17,8 @@ export function GameBoard(props) {
             r = Math.floor(Math.random() * i);
             i--;
 
-            [array[i], array[r] = [array[r], array[i]]];
+            [array[i], array[r]] = [array[r], array[i]];
         }
-
         return array;
     }
 
