@@ -5,6 +5,7 @@ export function GameBoard(props) {
     const [score, setScore] = React.useState(null)
     const [cards, setCards] = React.useState(placeCards([null, null, null, null, null, null, null, null, null, null]));
     const [inGame, setInGame] = React.useState(false);
+    const [firstFlipp, setFirstFlipp] = React.useState(null);
 
     {/* This is where I shuffle my array
         I am using the Fisher-Yates shuffle.
@@ -35,12 +36,42 @@ export function GameBoard(props) {
         return cardSet;
     }
 
-    function cardFlip(flippedCard) {
+    function match(flippedCard) {
+        console.log("Match successfully loaded!")
+        {console.log(firstFlipp)}
+        {console.log(flippedCard)}
+        /*If the cards are a match increase score by one, clear first and second card.*/
+        if (firstFlipp.value === flippedCard.value){
+            console.log("Matchfound!");
+            setFirstFlipp(null);
+            setScore(oldscore => oldscore++);
+            return;
+        }
+
+        /*If not match, make cards unflipped, clear first and second card, increase score by one*/
+        console.log("No Match");
+        flipCard([firstFlipp.id, flippedCard.id]);
+        setFirstFlipp(null);
+        setScore(oldscore => oldscore++);
+    }
+
+    function flipCard(flippedCardsIDs) {
         setCards(prevCards =>
             prevCards.map(card =>
-                card === flippedCard ? { ...card, flipped: true } : card
+                flippedCardsIDs.includes(card.id) ? { ...card, flipped: !card.flipped } : card
             )
         );
+    }
+
+    function pick(flippedCard) {
+        flipCard([flippedCard.id])
+
+        if (firstFlipp === null) {
+            setFirstFlipp(flippedCard);
+            return;
+        }
+
+        match(flippedCard);
     }
 
     function newGame() {
@@ -61,7 +92,7 @@ export function GameBoard(props) {
                         <td>
                             <button
                             disabled={!inGame}
-                            onClick={() => cardFlip(card)}
+                            onClick={() => pick(card)}
                             >
                             {card.flipped ? card.value : 'MM'}
                             </button>
