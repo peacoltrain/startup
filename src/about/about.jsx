@@ -1,4 +1,5 @@
 import React from 'react';
+import { data } from 'react-router-dom';
 
 export function About() {
   const [image, setImage] = React.useState('This is a placeholder for when I will have the image be called.')
@@ -8,13 +9,44 @@ export function About() {
   //I also thing I would be more efficient to save the word of the day and definition on the backend
   //Cross that bridge when i get to it.
 
-  React.useEffect(
-    () => {
-      setImage('oceanview.jpg');
-      setWord("Foray");
-      setDefinition("A foray is an initial and often hesitant attempt to do something in a new or different field or area of activity");
-    }, []    
-  );
+  //API endpoints I will use https://api.dictionaryapi.dev/api/v2/entries/en/<word>
+  //and https://random-word-api.herokuapp.com/word
+
+
+  React.useEffect(() => {
+
+    function getWord() {
+      // Get Random Word from first free api
+      fetch('https://random-word-api.herokuapp.com/word')
+        .then(response => response.json())
+        .then(data => {
+
+          const randomWord = data[0];
+          console.log("Random word:", randomWord);
+
+          // Get Definition
+          return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${randomWord}`)
+            .then(response => response.json())
+            .then(dictData => {
+
+              console.log(dictData);
+
+              setImage('oceanview.jpg');
+              setWord(randomWord);
+              setDefinition(
+                dictData?.[0]?.meanings?.[0]?.definitions?.[0]?.definition ||
+                "Definition not found"
+              );
+
+            });
+
+        });
+
+    }
+
+    getWord();
+
+  }, []);
 
   return (
     <main>
@@ -29,7 +61,7 @@ export function About() {
 
         <img src={image} alt="Bright Blue Ocean" width="600"></img>
 
-        <div>The word of the day will be {word}:</div>
+        <div>The word of the day will be {word.charAt(0).toUpperCase() + word.slice(1)}:</div>
         <div>Definition: {def}</div>
         
     </main>
