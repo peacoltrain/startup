@@ -71,7 +71,55 @@ app.use(function (err, req, res, next) {
     res.status(500).send({type: err.name, message: err.message});
 });
 
+app.use((req, res) => {
+    res.sendFile('index.html', {root: 'public'});
+});
 
+function updateScores(newScore) {
+    let updated = false;
+    for (const [i, prevScore] of scores.entries()) {
+        if (newScore.score < prevScore.score) {
+            scores.splice(i, 0, newScore);
+            found = true;
+            break;
+        }
+    }
+
+    if (!updated){
+        scores.push(newScore);
+    }
+
+    if (scores.length > 10) {
+        scores.length = 10;
+    }
+
+    return scores;
+}
+
+async function createUser(username, password) {
+    const passwordHash = await bcrypt.hash(password, 13);
+
+    const user = {
+        username: username,
+        password: passwordHash,
+        token: uuid.v4()
+    };
+    users.push(user);
+    return user;
+}
+
+async function findUser(field, value) {
+    if (!value) return null;
+    return users.find((u) => u[field] === value);
+}
+
+function setAuthCookie(res, authToken) {
+    res.cookie(authCookieName, authToken, {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'strict'
+    });
+}
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
