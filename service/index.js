@@ -3,7 +3,7 @@ const app = express();
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-app.get("*", (req, res) => {
+app.use((req, res) => {
     res.send({msg: 'Startup service is functional'});
 });
 
