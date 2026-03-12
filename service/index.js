@@ -31,7 +31,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = await findUser('username', req.body.username);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
-            user.tocken = uuid.v4();
+            user.token = uuid.v4();
             setAuthCookie(res, user.token);
             res.send({ username: user.username});
             return;
@@ -80,7 +80,7 @@ function updateScores(newScore) {
     for (const [i, prevScore] of scores.entries()) {
         if (newScore.score < prevScore.score) {
             scores.splice(i, 0, newScore);
-            found = true;
+            updated = true;
             break;
         }
     }
