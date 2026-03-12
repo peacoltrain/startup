@@ -17,7 +17,6 @@ export function GameHistory() {
         for (const [i, score] of scores.entries()) {
         scoreRows.push(
             <tr key={i}>
-            <td>{i}</td>
             <td>{score.name}</td>
             <td>{score.score}</td>
             <td>{score.date}</td>
