@@ -4,13 +4,23 @@ import React from 'react'
 export function Unauthenticated(props) {
     const [userName, setUsername] = React.useState(props.userName);
     const [password, setPassword] = React.useState('');
+    const [displayError, setDisplayError] = React.useState(null);
 
-    function loginUser(){
+    async function loginOrCreate(endpoint) {
+      const response = await fetch(endpoint, {
+        method: 'post',
+        body: JSON.stringify({ email: userName, password: password }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      if (response?.status === 200) {
         localStorage.setItem('userName', userName);
-    }
-
-    function signUp(){
-        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+      } else {
+        const body = await response.json();
+        setDisplayError(`⚠ Error: ${body.msg}`);
+      }
     }
 
     return (
@@ -23,8 +33,9 @@ export function Unauthenticated(props) {
           <span>Password </span>
           <input id="password" type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
         </div>
-        <button type="submit"  onClick={loginUser} disabled={!userName || !password}>Login</button>
-        <button type="submit" onClick={signUp} disabled={!userName || !password}>Sign UP</button>
+        <button type="button"  onClick={() =>loginOrCreate('/api/auth/login')} disabled={!userName || !password}>Login</button>
+        <button type="button" onClick={() => loginOrCreate('/api/auth/create')} disabled={!userName || !password}>Sign UP</button>
+        {displayError && <div>{displayError}</div>}
       </form>
     );
 }

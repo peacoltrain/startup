@@ -3,9 +3,17 @@ import React from 'react'
 export function Authenticated(props) {
 
     function logout() {
-        localStorage.removeItem('userName');
-        props.onLogout();
-    }
+        fetch(`/api/auth/logout`, {
+            method: 'delete',
+        })
+            .catch(() => {
+            // Logout failed. Assuming offline
+            })
+            .finally(() => {
+            localStorage.removeItem('userName');
+            props.onLogout();
+            });
+        }
 
     return (
         <div>
