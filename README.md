@@ -98,5 +98,18 @@ For my CSS this is what i did.
     - Generated notifications
         - Not actual websocket, but mimics behavior using some arrays with some mixing and matching with different notifications
     - Scores Keeps track of the last 10 completed games
--I used useState and useEffect hooks for creating variables that when changed re-renders. Had useEffect help with creating new messages every-once in a while.
+- I used useState and useEffect hooks for creating variables that when changed re-renders. Had useEffect help with creating new messages every-once in a while.
+
+# Servies
+
+By following the instructions I was able to get this portion of the project implemented. These elements that where accomplished were.
+- Created a index.js script in the service folder that uses express and Node.js
+- Frontend elements where served up using static middleware.
+- Frontend calls the two third party services for a word of the day.
+    - **I submitted to get an api key from the best word-of-the-day provider and havent got it yet. Right now it runs by calling a random word api and then querying that word of a definition in another api. This means that sometimes the we fail to get a definition. This will be fixed by the next iteration.**
+- The backend provides service endpoints. see index.js
+- The frontend calls service endpoints.
+    - Now instead of local storage we use cookies and verify users with authTokens. You cannot login if you do not have an account. The games are now saved via the same cookies and data is accessed through the endpoints.
+- Function registration, login, logout, and restricted endpoints.
+- Uses password hashing for security.
 
