@@ -6,10 +6,9 @@ export function GameHistory() {
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
     React.useEffect(() => {
-        const scoresText = localStorage.getItem('scores');
-        if (scoresText) {
-        setScores(JSON.parse(scoresText));
-        }
+        fetch('/api/scores')
+            .then(res => res.json())
+            .then(scores => setScores(scores));
     }, []);
 
     // Demonstrates rendering an array with React

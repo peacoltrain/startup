@@ -37,7 +37,7 @@ export function GameBoard(props) {
         return cardSet;
     }
 
-    function saveGame(pairsFound) {
+    async function saveGame(pairsFound) {
         if (pairsFound !== 10) return;
 
         const scoreEntry = {
@@ -46,7 +46,15 @@ export function GameBoard(props) {
             date: new Date().toLocaleDateString()
         };
 
+        await fetch('/api/score', {
+            method: 'Post',
+            headers: { 'content-type': 'application/json'},
+            body: JSON.stringify(scoreEntry)
+        });
+
         // Get existing scores
+        // This is for local storage
+        // TODO: Remove this
         const scoresText = localStorage.getItem('scores');
         let scores = [];
 
